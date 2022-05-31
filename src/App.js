@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import { Admin, Resource } from 'react-admin';
+import { UserList } from "./users";
+import jsonServerProvider from 'ra-data-json-server';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 
+// The App component renders an <Admin> component, which is the root component
+// of a react-admin app. This component expect a dataProvider prop.
+// The admin component expects one or more <Resource> child components.
+// Each resource maps a NAME to an ENDPOINT. 
+
+const App = () => (
+  <Admin dataProvider={dataProvider}>
+    <Resource 
+      name="users" 
+      list={UserList} 
+    />
+  </Admin>
+)
 export default App;
