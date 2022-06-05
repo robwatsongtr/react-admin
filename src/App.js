@@ -3,6 +3,7 @@ import { Admin, Resource } from 'react-admin';
 import { UserList } from "./users";
 import jsonServerProvider from 'ra-data-json-server';
 
+// use jsonplaceholder as dummy API data 
 const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 
 // The App component renders an <Admin> component, which is the root component
