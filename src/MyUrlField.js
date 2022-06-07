@@ -8,7 +8,8 @@ import LaunchIcon from '@mui/icons-material/Launch';
 // they grab the the record fetched from the API with a custom hook
 
 // React relies on MUI, which support a prop called 'sx', which allows
-// custom inline styles. 
+// custom inline styles. Here we will remove the underline from 
+// the link and add a lauch icon. 
 
 const MyUrlField = ({ source }) => {
     const record = useRecordContext();
