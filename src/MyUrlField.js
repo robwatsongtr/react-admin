@@ -7,6 +7,7 @@ import LaunchIcon from '@mui/icons-material/Launch';
 // in react-admin, fields are simple React components. At runtime
 // they grab the the record fetched from the API with a custom hook
 
+// STYLES:
 // React relies on MUI, which support a prop called 'sx', which allows
 // custom inline styles. Here we will remove the underline from 
 // the link and add a lauch icon. 
