@@ -11,6 +11,7 @@ import {
   ReferenceInput,
   SelectInput,
   TextInput,
+  useRecordContext,
 } from 'react-admin';
 
 // Relationships: each post is related to a user 
@@ -33,9 +34,18 @@ export const PostList = () => (
     </List>
 );
 
+const PostTitle = () => {
+  // context API is like a global store in React
+  const record = useRecordContext()
+  return <span>Post {record ? `"${record.title}"` : ''}</span>;
+  
+}
+
 export const PostEdit = () => (
-  <Edit>
+  <Edit title={ <PostTitle /> }>
+
       <SimpleForm>
+
           <TextInput disabled source="id" />
           <ReferenceInput source="userId" reference="users">
               <SelectInput optionText="name" />
@@ -46,20 +56,23 @@ export const PostEdit = () => (
           <TextInput multiline source="body" />
 
       </SimpleForm>
+
   </Edit>
 );
 
 export const PostCreate = props => (
     <Create {...props}>
+
         <SimpleForm>
 
             <ReferenceInput source="userId" reference="users">
                 <SelectInput optionText="name" />
             </ReferenceInput>
-            
+
             <TextInput source="title" />
             <TextInput multiline source="body" />
 
         </SimpleForm>
+        
     </Create>
 );
