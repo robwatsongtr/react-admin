@@ -1,6 +1,8 @@
 import * as React from "react";
-import { Admin, Resource } from 'react-admin';
+import { Admin, Resource, EditGuesser } from 'react-admin';
 import { PostList } from './posts'
+import { PostEdit } from "./posts";
+import { PostCreate } from "./posts";
 import { UserList } from "./users";
 import jsonServerProvider from 'ra-data-json-server';
 
@@ -10,7 +12,7 @@ const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 // The App component renders an <Admin> component, which is the root component
 // of a react-admin app. 
 
-// This component expect a dataProvider prop.
+// This component expects a dataProvider prop.
 // The admin component expects one or more <Resource> child components.
 // Each resource maps a NAME to an ENDPOINT. 
 
@@ -23,7 +25,12 @@ const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 const App = () => (
   <Admin dataProvider={dataProvider}>
     <Resource name="users" list={UserList} />
-    <Resource name="posts" list={PostList} />
+    <Resource 
+      name="posts" 
+      list={PostList} 
+      edit={PostEdit} 
+      create={PostCreate}
+    />
   </Admin>
 )
 export default App;
