@@ -5,6 +5,7 @@ import { PostEdit } from "./posts";
 import { PostCreate } from "./posts";
 import { UserList } from "./users";
 import { Dashboard } from './Dashboard'
+import { authProvider } from './authProvider'
 import PostIcon from '@mui/icons-material/Book';
 import UserIcon from '@mui/icons-material/Group';
 import jsonServerProvider from 'ra-data-json-server';
@@ -26,7 +27,7 @@ const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 // (list (Read), create, edit(update, delete), and show).
 
 const App = () => (
-  <Admin dashboard={Dashboard} dataProvider={dataProvider}>
+  <Admin dashboard={Dashboard} dataProvider={dataProvider} authProvider={authProvider}>
     <Resource name="users" list={UserList} icon={UserIcon} />
     <Resource 
       name="posts" 
