@@ -1,6 +1,7 @@
 import * as React from "react";
 import {
   List,
+  SimpleList,
   Datagrid,
   TextField,
   ReferenceField,
@@ -13,6 +14,7 @@ import {
   TextInput,
   useRecordContext,
 } from 'react-admin';
+import { useMediaQuery } from '@mui/material';
 
 // React-admin can use Input components to create a multi-criteria search 
 // engine in the list view. Pass an array of such Input components
@@ -28,27 +30,37 @@ const postFilters = [
 // Relationships: each post is related to a user 
 // relationships created by <ReferenceField>
 // Also we have a nicely UX'ed design here with just the name, title, and edit button.
-export const PostList = () => (
+// 
+// Now added mobile functionality with useMediaQuery and putting small and large in a ternary.
+export const PostList = () => {
+  const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
+  return (
     <List filters={postFilters}>
-        <Datagrid>
-            <TextField source="id" />
-
-            <ReferenceField source="userId" reference="users">
-              <TextField source="name" />
-            </ReferenceField>
-
-            <TextField source="title" />
-
-            <EditButton />
-        </Datagrid>
+        {isSmall ? (
+            <SimpleList
+                primaryText={ record => record.title }
+                secondaryText={ record => `${record.views} views`}
+                tertiaryText={ record => new Date(record.published_at).toLocaleDateString() }
+            />
+        ) : (
+            <Datagrid>
+                <TextField source="id" />
+                <ReferenceField label="User" source="userId" reference="users">
+                    <TextField source="name" />
+                </ReferenceField>
+                <TextField source="title" />
+                <EditButton />
+            </Datagrid>
+        )}
     </List>
-);
+  )
+};
 
 const PostTitle = () => {
   // context API is like a global store in React
   const record = useRecordContext()
   return <span>Post {record ? `"${record.title}"` : ''}</span>;
-  
+ 
 }
 
 export const PostEdit = () => (
