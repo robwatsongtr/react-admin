@@ -17,6 +17,9 @@ const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 // of a react-admin app. 
 
 // This component expects a dataProvider prop.
+
+// The work is in writing the dataProvider as it is an adapter to an API. 
+
 // The admin component expects one or more <Resource> child components.
 // Each resource maps a NAME to an ENDPOINT. 
 

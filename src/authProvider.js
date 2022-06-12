@@ -9,8 +9,6 @@
 // login, logout, checkError, checkAuth, getPermissions 
 
 
-//This shit don't work: 
-
 // in src/authProvider.js
 const authProvider =  {
   // called when the user attempts to log in
