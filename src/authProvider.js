@@ -15,12 +15,12 @@ const authProvider =  {
   login: ({ username }) => {
     localStorage.setItem('username', username);
     // accept all username/password combinations
-    return Promise.resolve();
+    return Promise.resolve(); // will return JWT payload
   },
   // called when the user clicks on the logout button
   logout: () => {
     localStorage.removeItem('username');
-    return Promise.resolve();
+    return Promise.resolve(); // will return acknowlegement or error 
   },
   // called when the API returns an error
   checkError: ({ status }) => {

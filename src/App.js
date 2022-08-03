@@ -33,7 +33,7 @@ const App = () => (
   <Admin dashboard={Dashboard} dataProvider={dataProvider} authProvider={authProvider}>
     <Resource name="users" list={UserList} icon={UserIcon} />
     <Resource 
-      name="posts" 
+      name="posts"  
       list={PostList} 
       edit={PostEdit} 
       create={PostCreate}
